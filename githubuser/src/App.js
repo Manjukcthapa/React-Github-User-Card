@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from "axios";
 import './App.css';
 
 class App extends Component {
@@ -14,7 +14,17 @@ class App extends Component {
     this.fetchUser();
   }
 
-  
+fetchUser = () => {
+  axios.get(`https://api.github.com/users/Manjukcthapa`)
+  .then(res => {
+    console.log('res.data',res.data)
+    const userInfo = res.data;
+    this.setState({userInfo})
+  })
+.catch(err => {
+  console.log(err);
+})
+}
 
 
   render() {
