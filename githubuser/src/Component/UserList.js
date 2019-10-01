@@ -1,14 +1,14 @@
 import React from "react";
 import UserCard from "./UserCard"
 
-const UserList = (props) => {
+export default function UserList(props){
     return(
         <div>
-            {props.userInfo.map((card) => (
-      <UserCard key={card.id} {...card}  />
+            {props.userInfo.map(card => (
+      <UserCard key={card.id} card={card}  />
     ))}
         </div>
     )
 }
 
-export default UserList;
+

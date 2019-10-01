@@ -1,36 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import axios from "axios";
-import './App.css';
+import UserList from "./Component/UserList";
+import "./App.css";
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       userInfo:[]
-    }
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetchUser();
   }
 
-fetchUser = () => {
-  axios.get(`https://api.github.com/users/Manjukcthapa`)
-  .then(res => {
-    console.log('res.data',res.data)
-    const userInfo = res.data;
-    this.setState({userInfo})
-  })
-.catch(err => {
-  console.log(err);
-})
-}
-
+  fetchUser = () => {
+    axios
+      .get(`https://api.github.com/users/Manjukcthapa`)
+      .then(res => {
+        console.log("res.data", res.data);
+        const userInfo = res.data;
+        this.setState({userInfo:[userInfo]});
+       
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (
       <div className="App">
-       <h1>Hello</h1>
+        <UserList userInfo={this.state.userInfo} />
       </div>
     );
   }
