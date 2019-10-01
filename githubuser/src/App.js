@@ -14,6 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchUser();
+    this.fetchFollowers();
   }
 
   fetchUser = () => {
@@ -29,6 +30,18 @@ class App extends Component {
         console.log(err);
       });
   };
+
+  fetchFollowers = () => {
+    axios.get(`https://api.github.com/users/Manjukcthapa/followers`)
+      .then (response => {
+        console.log('followers:', response);
+        const userFollowers = response.data;
+        this.setState({userFollowers:[userFollowers]})
+        })
+        .catch(err => {
+          console.log(err);
+        })
+  }
 
   render() {
     return (
