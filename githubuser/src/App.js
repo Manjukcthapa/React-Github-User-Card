@@ -10,6 +10,12 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    this.fetchUser();
+  }
+
+  
+
 
   render() {
     return (
