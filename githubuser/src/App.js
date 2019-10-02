@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 import UserList from "./Component/UserList";
 import FollowersList from "./Component/FollowersList";
+import Form from "./Component/form"
 import "./App.css";
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       userInfo: [],
-      userFollowers: []
+      userFollowers: [],
+      searchItem:""
     };
   }
 
@@ -47,6 +50,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Form searchItem = {this.state.searchItem}/>
         <UserList userInfo={this.state.userInfo} />
         <FollowersList userFollowers={this.state.userFollowers} />
       </div>
